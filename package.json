@@ -3,16 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://cutieoksusu.github.io/hy-road", 
+  "homepage": "https://cutieoksusu.github.io/hy-road",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",  
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -r https://github.com/cutieoksusu/hy-road.git"
   },
   "dependencies": {
+    "lucide-react": "^1.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
