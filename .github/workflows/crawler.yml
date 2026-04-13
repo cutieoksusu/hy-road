@@ -2,7 +2,9 @@ name: Daily Web Crawler
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    # 한국 시간 기준 오후 7시 40분 (UTC 기준 10시 40분)에 실행되도록 수정
+    - cron: '40 10 * * *'
+  # 수동으로 버튼을 눌러서 실행할 수 있게 허용
   workflow_dispatch:
 
 jobs:
