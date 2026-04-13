@@ -1,10 +1,16 @@
 name: Daily Web Crawler
 
 on:
+  # 1. 파일 수정 후 깃허브에 올리면 '기다림 없이 즉시' 크롤링 실행!
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'latest_jobs.json' # 무한루프 방지
+  # 2. 매일 지정된 시간에 자동 실행 (한국시간 오후 7시 40분 기준)
   schedule:
-    # 한국 시간 기준 오후 7시 40분 (UTC 기준 10시 40분)에 실행되도록 수정
     - cron: '40 10 * * *'
-  # 수동으로 버튼을 눌러서 실행할 수 있게 허용
+  # 3. 수동 실행 버튼
   workflow_dispatch:
 
 jobs:
