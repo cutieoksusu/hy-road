@@ -542,26 +542,27 @@ function App() {
 
   // 진로(careerSub)가 설정되면 가상의 서버로 API 요청을 보낸다고 가정하는 Effect
 // [기존의 가짜 데모 useEffect 코드를 지우고 아래 코드로 교체하세요!]
+// App.jsx 내부 수정
   useEffect(() => {
     if (userProfile.careerSub) {
       setIsLoadingLive(true);
       
-      // 내 깃허브 저장소의 최신 JSON 파일 주소 (캐시 방지용 timestamp 추가)
-      // 주의: 본인의 깃허브 아이디로 주소가 제대로 되어있는지 확인하세요!
+      // 내 깃허브 저장소의 최신 JSON 파일 주소 (본인 깃허브 아이디 확인 필수!)
       const RAW_JSON_URL = `https://raw.githubusercontent.com/cutieoksusu/hy-road/main/latest_jobs.json?timestamp=${new Date().getTime()}`;
 
       fetch(RAW_JSON_URL)
         .then(response => response.json())
         .then(data => {
-          // 데이터가 성공적으로 들어오면 리스트에 세팅
-          setLiveActivities(data);
+          // 💡 핵심 로직: 가져온 데이터 통째(data)에서 현재 내 직무(careerSub)에 맞는 배열만 쏙 빼옵니다.
+          // 만약 직무 이름이 꼬여서 데이터가 없다면 'default' 데이터를 띄워줍니다.
+          const myCareerJobs = data[userProfile.careerSub] || data['default'] || [];
+          setLiveActivities(myCareerJobs);
           setIsLoadingLive(false);
         })
         .catch(error => {
           console.error("데이터 로드 실패:", error);
-          // 서버 통신 실패 시 에러 안내
           setLiveActivities([{
-             title: "🚨 실시간 데이터를 불러오는데 실패했습니다.",
+             title: "🚨 실시간 맞춤 데이터를 불러오는데 실패했습니다.",
              dDay: "에러", views: "-", url: "#"
           }]);
           setIsLoadingLive(false);
