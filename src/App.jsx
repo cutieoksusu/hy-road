@@ -57,7 +57,7 @@ const getGradReqs = (dept, majorType) => {
     '국어국문학과': { total: 126, major100_300: 48, major400: 12, group: 'humanities' },
     '영어영문학과': { total: 126, major100_300: 48, major400: 12, group: 'humanities' },
     '정책학과': { total: 126, major100_300: 48, major400: 12, group: 'policy' },
-    // 에리카캠
+    // 에리카캠 호환 추가
     '건축학전공': { total: 162, major100_300: 90, major400: 18, group: 'arch' },
     '건축공학전공': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
     '전자공학부': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
@@ -101,6 +101,7 @@ const CAREER_GOALS = {
   GRAD_SCHOOL: { id: 'grad_school', name: '대학원 진학', sub: ['자대 대학원', '타대 대학원'] }
 };
 
+// 💡 D-day 및 시험일정이 구체화된 스펙맵
 const CAREER_SPEC_MAP = {
   'IT/소프트웨어': [
     { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', dDay: '상시접수', duration: '약 2주~1개월', desc: '개발자도 최소한의 어학 스탯은 필수. 대기업 서류 패스 기본 요건입니다.', url: 'https://www.opic.or.kr/' },
@@ -197,7 +198,7 @@ const CAREER_SPEC_MAP = {
   ]
 };
 
-// 💡 [신규 탑재] 학년별 진로 로드맵 데이터베이스 (Map UI 생성용)
+// 💡 [탑재 완료] 학년별 진로 로드맵 데이터베이스 (Map UI 생성용)
 const YEARLY_ROADMAP_DB = {
   'IT/소프트웨어': [
     { grade: 1, title: '기초 탐색 및 어학', items: ['교내 코딩 동아리(멋쟁이사자처럼 등) 가입', '1인 1프로그래밍 언어 마스터 (Python, Java)'] },
@@ -391,16 +392,6 @@ const CURRICULUM_DB = {
     { name: '물리화학1', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 1학기', ownerDept: '화학과', reason: '화학 열역학 기초.' },
     { name: '표면화학', type: '전공 400단위', credits: 2, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '화학과', reason: '반도체 디스플레이 공정 직결 심화.' }
   ],
-  '식품영양학과': [
-    { name: '기초영양학', type: '전공 100~300단위', credits: 3, target: '식품/F&B', gradeTerm: '1학년 2학기', ownerDept: '식품영양', reason: '영양소 대사 및 식품 기초.' },
-    { name: '식품위생학', type: '전공 100~300단위', credits: 3, target: '식품/F&B', gradeTerm: '2학년 2학기', ownerDept: '식품영양', reason: '식품 품질관리(QC/QA) 및 위생사 자격증 필수 과목.' },
-    { name: '임상영양학', type: '전공 400단위', credits: 3, target: '식품/F&B', gradeTerm: '4학년 1학기', ownerDept: '식품영양', reason: '병원/기업 영양사 실무 심화.' }
-  ],
-  '의류학과': [
-    { name: '의류소재학', type: '전공 100~300단위', credits: 3, target: '패션/의류', gradeTerm: '1학년 2학기', ownerDept: '의류학과', reason: '패션 벤더/MD 직무의 핵심인 원단/소재 기초.' },
-    { name: '패션마케팅', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '3학년 1학기', ownerDept: '의류학과', reason: '패션 브랜드 기획 및 마케팅 전략 수립.' },
-    { name: '패션머천다이징', type: '전공 400단위', credits: 3, target: '패션/의류', gradeTerm: '4학년 1학기', ownerDept: '의류학과', reason: '패션 MD 실무의 꽃, 상품 기획 및 바잉 심화.' }
-  ],
   '경제금융학부': [
     { name: '계량경제', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '3학년 1학기', ownerDept: '경금대', reason: '경제 데이터 통계 분석 핵심.' },
     { name: '시장미시구조론과핀테크', type: '전공 400단위', credits: 3, target: '금융/은행', gradeTerm: '4학년 1학기', ownerDept: '경금대', reason: '핀테크 알고리즘 심화 전공.' }
@@ -423,7 +414,7 @@ const CURRICULUM_DB = {
     { name: '투자론', type: '전공 400단위', credits: 3, target: '금융/은행', gradeTerm: '4학년 1학기', ownerDept: '경영학부', reason: '증권사/IB 면접 직결 심화.' }
   ],
 
-  // ==== 융합전공대학 복구 ====
+  // ==== 융합전공대학 복구 완료 ====
   '데이터융합서비스디자인융합전공': [
     { name: '인간-Ai상호작용디자인', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: 'AI UI/UX 디자인 기초입니다.' },
     { name: '디지털프로토타이핑', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '실제 동작하는 프로토타입 개발 심화.' }
@@ -652,11 +643,11 @@ export default function App() {
 
   const [achievedSpecs, setAchievedSpecs] = useState([]);
   
-  // 신규: 나의 대외활동 일지 관리용 State
+  // 💡 [복구] 나의 대외활동 일지 관리용 State
   const [journals, setJournals] = useState([]);
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
   
-  // 신규: 스펙 사진 인증(OCR)용 State
+  // 💡 [복구] 스펙 사진 인증(OCR)용 State
   const [selectedSpec, setSelectedSpec] = useState('');
   const [customSpecName, setCustomSpecName] = useState('');
   const [specScore, setSpecScore] = useState('');
@@ -703,11 +694,9 @@ export default function App() {
   // 💡 [핵심] OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
     setIsVerifying(true);
-    // 1.5초 딜레이 후 자동 인식 완료 처리
     setTimeout(() => {
       setIsVerifying(false);
       setVerificationSuccess(true);
-      // 데모를 위해 가상의 점수 자동 기입
       if (selectedSpec.includes('TOEIC')) setSpecScore('900');
       else if (selectedSpec.includes('OPIc')) setSpecScore('IH');
       else setSpecScore('합격');
@@ -897,7 +886,10 @@ export default function App() {
                   )}
                   <tr><td className="py-2.5 px-3">영어전용강좌수</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).englishAvg}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.englishAvg} onChange={e => handleCreditChange('englishAvg', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr><td className="py-2.5 px-3">선수강이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.prerequisite} onChange={e => handleCreditChange('prerequisite', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
+                  <tr><td className="py-2.5 px-3">졸업평점</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).gpa}</td><td className="py-1.5 px-2"><input type="number" step="0.01" value={userProfile.credits.gpa} onChange={e => handleCreditChange('gpa', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" placeholder="4.5" /></td></tr>
+                  <tr><td className="py-2.5 px-3">미필과목이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.requiredCourses} onChange={e => handleCreditChange('requiredCourses', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
                   <tr><td className="py-2.5 px-3">사회봉사</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).volunteer}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.volunteer} onChange={e => handleCreditChange('volunteer', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3">인턴십이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.internship} onChange={e => handleCreditChange('internship', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 font-bold text-[#00307B]">핵심교양</td><td className="text-center font-bold text-[#00307B]">{getGradReqs(userProfile.department, userProfile.majorType).coreElective}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.coreElective} onChange={e => handleCreditChange('coreElective', e.target.value)} className="w-full p-2 border border-[#00307B] rounded-lg text-center bg-white font-bold text-[#00307B] focus:outline-none" /></td></tr>
                   <tr><td className="py-2.5 px-3 font-bold text-orange-600">IC-PBL강좌수</td><td className="text-center font-bold text-orange-400">{getGradReqs(userProfile.department, userProfile.majorType).icpbl}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.icpbl} onChange={e => handleCreditChange('icpbl', e.target.value)} className="w-full p-2 border border-orange-300 rounded-lg text-center bg-orange-50 font-bold focus:border-orange-500 focus:outline-none" /></td></tr>
                 </tbody>
@@ -927,7 +919,7 @@ export default function App() {
           </div>
         )}
 
-        {/* 💡 [기능 2] 사진 촬영 인증 시뮬레이션 적용된 스펙 등록 폼 */}
+        {/* 💡 [복구 완료] 사진 촬영 인증 시뮬레이션 적용된 스펙 등록 폼 */}
         {onboardingStep === 5 && (
           <div className="animate-fade-in-up pb-10">
             <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
@@ -1121,8 +1113,8 @@ export default function App() {
                   </div>
                   {spec.expiryDate && (
                     <div className="text-right">
-                      <p className="text-[9px] text-orange-400 font-bold uppercase mb-0.5">만료일</p>
-                      <p className="text-[11px] font-black text-orange-600 bg-orange-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
+                      <p className="text-[9px] text-gray-400 font-bold uppercase mb-0.5">만료일</p>
+                      <p className="text-[11px] font-black text-gray-600 bg-gray-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
                     </div>
                   )}
                 </div>
@@ -1131,7 +1123,7 @@ export default function App() {
           </div>
         )}
 
-        {/* 💡 [기능 4] D-day가 강조된 마일스톤 목록 */}
+        {/* 💡 [복구 완료] D-day가 강조된 마일스톤 목록 */}
         <div>
           <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
             <Target size={20} className="text-[#00307B]" /> 앞으로의 마일스톤
@@ -1198,8 +1190,8 @@ export default function App() {
           <div className="p-4 bg-white overflow-x-auto"><table className="w-full text-left text-[11px] sm:text-xs border-collapse min-w-[280px]"><thead><tr className="border-b-2 border-gray-200 text-gray-500 font-bold"><th className="pb-2 w-1/3">항목</th><th className="pb-2 text-center">취득</th><th className="pb-2 text-center">배당</th><th className="pb-2 text-center">잔여</th><th className="pb-2 text-center">판정</th></tr></thead><tbody className="divide-y divide-gray-100">
             <tr><td className="py-2.5 font-bold text-gray-800">졸업학점</td><td className="text-center">{current.total}</td><td className="text-center text-gray-400">{req.total}</td><td className="text-center text-red-500">{getStatus(current.total, req.total).remain || ''}</td><td className="text-center">{getStatus(current.total, req.total).ui}</td></tr>
             <tr><td className="py-2.5 font-bold text-gray-800">전공학점</td><td className="text-center">{current.majorTotal}</td><td className="text-center text-gray-400">{req.majorTotal}</td><td className="text-center text-red-500">{getStatus(current.majorTotal, req.majorTotal).remain || ''}</td><td className="text-center">{getStatus(current.majorTotal, req.majorTotal).ui}</td></tr>
-            <tr><td className="py-2.5 pl-2 text-gray-700">↳ 100~300 / 기초·핵심</td><td className="text-center">{current.major100_300}</td><td className="text-center text-gray-400">{req.major100_300}</td><td className="text-center text-red-500">{getStatus(current.major100_300, req.major100_300).remain || ''}</td><td className="text-center">{getStatus(current.major100_300, req.major100_300).ui}</td></tr>
-            <tr><td className="py-2.5 pl-2 font-bold text-orange-600">↳ 400단위 / 전공심화</td><td className="text-center font-bold text-orange-600">{current.major400}</td><td className="text-center text-orange-400">{req.major400}</td><td className="text-center text-red-500">{getStatus(current.major400, req.major400).remain || ''}</td><td className="text-center">{getStatus(current.major400, req.major400).ui}</td></tr>
+            <tr><td className="py-2.5 pl-2 text-gray-700">↳ 100~300 / 핵심</td><td className="text-center">{current.major100_300}</td><td className="text-center text-gray-400">{req.major100_300}</td><td className="text-center text-red-500">{getStatus(current.major100_300, req.major100_300).remain || ''}</td><td className="text-center">{getStatus(current.major100_300, req.major100_300).ui}</td></tr>
+            <tr><td className="py-2.5 pl-2 font-bold text-orange-600">↳ 400단위</td><td className="text-center font-bold text-orange-600">{current.major400}</td><td className="text-center text-orange-400">{req.major400}</td><td className="text-center text-red-500">{getStatus(current.major400, req.major400).remain || ''}</td><td className="text-center">{getStatus(current.major400, req.major400).ui}</td></tr>
             {userProfile.majorType !== '심화전공(단일)' && (
               <tr><td className="py-2.5 font-bold text-purple-700">제2전공</td><td className="text-center text-purple-600">{current.secondMajor}</td><td className="text-center text-purple-400">{req.secondMajor}</td><td className="text-center text-red-500">{getStatus(current.secondMajor, req.secondMajor).remain || ''}</td><td className="text-center">{getStatus(current.secondMajor, req.secondMajor).ui}</td></tr>
             )}
@@ -1233,7 +1225,7 @@ export default function App() {
           )}
         </div>
 
-        {/* 💡 [기능 3] 학년별 진로 로드맵 지도(Subway Map UI) */}
+        {/* 💡 [복구 완료] 학년별 진로 로드맵 지도(Subway Map UI) */}
         <h3 className="font-black text-lg mb-6 flex items-center gap-2">
           <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
         </h3>
@@ -1278,7 +1270,7 @@ export default function App() {
         <div className="mt-4 inline-block px-4 py-2 bg-blue-50 text-[#00307B] rounded-2xl text-xs font-black">{userProfile.careerSub} 목표</div>
       </div>
       
-      {/* 💡 [기능 1] 나의 대외활동 일지 관리 섹션 */}
+      {/* 💡 [복구 완료] 나의 대외활동 일지 관리 섹션 */}
       <div className="mb-8">
         <div className="flex justify-between items-end mb-4">
            <h3 className="font-black text-lg flex items-center gap-2"><FileText size={20} className="text-[#00307B]"/> 나의 활동 일지</h3>
