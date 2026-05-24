@@ -5,6 +5,10 @@ import {
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
 
+// ==========================================
+// 1. 전역 데이터베이스 (서울 + ERICA 완벽 통합)
+// ==========================================
+
 const CAMPUS_DATA = {
   SEOUL: {
     name: '서울캠퍼스',
@@ -133,22 +137,6 @@ const CAREER_SPEC_MAP = {
     { cat: 'project', title: '졸업작품전/교내 패션쇼 위원회', source: '교내', targetDate: '2026-09-01', desc: '컬렉션 기획, 원단 소싱, 패턴 제작 등 패션 실무 사이클을 통째로 경험합니다.', url: '#' },
     { cat: 'intern', title: '의류 벤더/브랜드 MD 체험형 인턴', source: '각 패션기업', targetDate: '2026-06-05', desc: '영원무역, 한세실업, LF 등 패션 기업 실무 인턴십.', url: '#' },
   ],
-  '식품/F&B': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', dDay: '상시접수', duration: '약 1~2개월', desc: '식품 및 소비재 대기업 지원의 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '식품기사', source: 'Q-Net', dDay: '정기(연 3회)', duration: '약 2~3개월', desc: '식품 연구개발(R&D) 및 품질관리(QC) 필수 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: '위생사 / 영양사', source: '한국보건의료인국가시험원', dDay: '연 1회(하반기)', duration: '약 2~3개월', desc: '식품영양학과 특화 국가면허. 급식, 단체급식, 식품위생 직무 필수.', url: 'https://www.kuksiwon.or.kr/' },
-    { cat: 'cert', title: '품질경영기사', source: 'Q-Net', dDay: '정기(연 3회)', duration: '약 2~3개월', desc: '식품공장 생산관리/품질보증(QA) 지원 시 엄청난 무기가 됩니다.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'activity', title: '식품/외식기업 대학생 서포터즈', source: '위비티/링커리어', dDay: '상시', duration: '약 3~6개월', desc: '오뚜기, 농심, CJ제일제당 등 타겟 기업의 프로슈머/서포터즈 활동 필수.', url: 'https://www.wevity.com/' },
-    { cat: 'intern', title: '식품 기업 R&D/품질관리 인턴', source: '기업별 채용공고', dDay: '방학 중', duration: '2개월 이상', desc: '실제 식품 공정 및 연구 보조 경험을 쌓을 수 있는 핵심 스펙.', url: '#' },
-  ],
-  '패션/의류': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'OPIc', dDay: '상시접수', duration: '약 1~2개월', desc: '글로벌 패션 브랜드(벤더) 및 해외 영업/소싱 지원 시 필수 요건.', url: 'https://www.opic.or.kr/' },
-    { cat: 'cert', title: '패션머천다이징산업기사', source: 'Q-Net', dDay: '연 3회', duration: '약 2개월', desc: '패션 MD 및 기획 직무를 희망한다면 전공 지식을 증명하는 가장 확실한 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: 'GTQ / 컴퓨터그래픽스운용기능사', source: 'KPC 자격', dDay: '상시/정기', duration: '약 1~2개월', desc: '의류 디자인 및 VMD 보조를 위한 포토샵/일러스트레이터 활용 능력 증명.', url: 'https://license.kpc.or.kr/' },
-    { cat: 'activity', title: '패션 브랜드 대외활동/앰버서더', source: '캠퍼스픽', dDay: '수시', duration: '약 3~6개월', desc: '의류 브랜드 마케터, 패션 매거진 에디터 등 실무 경험 축적.', url: 'https://www.campuspick.com/' },
-    { cat: 'project', title: '졸업작품전/교내 패션쇼 위원회', source: '교내', dDay: '3~4학년', duration: '1년', desc: '컬렉션 기획, 원단 소싱, 패턴 제작 등 패션 실무 사이클을 통째로 경험합니다.', url: '#' },
-    { cat: 'intern', title: '의류 벤더/브랜드 MD 체험형 인턴', source: '각 패션기업', dDay: '상/하반기', duration: '2~6개월', desc: '영원무역, 한세실업, LF 등 패션 기업 실무 인턴십.', url: '#' },
-  ],
   '금융/은행': [
     { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '은행권 및 금융공기업 서류 통과를 위한 기본 어학 컷입니다.', url: 'https://exam.toeic.co.kr/' },
     { cat: 'cert', title: '신용분석사', source: '한국금융연수원', targetDate: '2026-06-13', desc: '기업금융 직무 목표 시 가장 파괴력 있는 자격증입니다.', url: 'https://www.kbi.or.kr/' },
@@ -223,18 +211,6 @@ const YEARLY_ROADMAP_DB = {
     { grade: 2, title: '직무 설정 및 스터디', items: ['상상유니브 등 연합 마케팅 대외활동 참여', 'GA4 및 포토샵/피그마 기초 툴 학습'] },
     { grade: 3, title: '실무 스펙 및 공모전', items: ['제일기획/대홍기획 등 메이저 공모전 출전', '대기업(현대차, 아모레 등) 공식 서포터즈 활동'] },
     { grade: 4, title: '취업 실전 및 포트폴리오', items: ['마케팅 직무 체험형 인턴십 수료', '노션 포트폴리오 사이트 완성'] }
-  ],
-  '식품/F&B': [
-    { grade: 1, title: '전공 기초 및 어학', items: ['식품학, 미생물학 등 기초 전공 이수', '토익 800+ 및 OPIc 스피킹 점수 조기 획득'] },
-    { grade: 2, title: '자격증 및 진로 설정', items: ['위생사 또는 식품기사(관련학과) 준비 시작', '식품/외식 트렌드 분석 및 관심 기업 스크랩'] },
-    { grade: 3, title: '대외활동 및 실무', items: ['메이저 식품 기업(CJ, 오뚜기 등) 서포터즈 활동', 'HACCP 팀장 교육 수료 및 품질경영기사 응시'] },
-    { grade: 4, title: '인턴십 및 취업 실전', items: ['식품 R&D / QC 직무 체험형 인턴 수료', '전공 캡스톤 결과물 포트폴리오화 및 공채 지원'] }
-  ],
-  '패션/의류': [
-    { grade: 1, title: '기초 탐색 및 어학', items: ['패션 트렌드 아카이빙 계정(SNS) 운영 시작', '의류 소재 및 디자인 기초 전공 이수'] },
-    { grade: 2, title: '디자인 툴 및 대외활동', items: ['GTQ/포토샵/일러스트 툴 자격증 취득', '패션 브랜드 앰버서더/에디터 활동 참여'] },
-    { grade: 3, title: '자격증 및 실무 경험', items: ['패션머천다이징산업기사 / 샵마스터 취득', '의류 벤더/브랜드 기업 현장실습(인턴) 경험'] },
-    { grade: 4, title: '작품 및 취업 포트폴리오', items: ['졸업작품전(컬렉션) 출품 및 위원회 활동', 'MD/VMD/디자이너 맞춤형 포트폴리오 제작'] }
   ],
   '금융/은행': [
     { grade: 1, title: '기초 탐색 및 어학', items: ['가치투자/금융 교내 학회 가입', '경제 신문 스크랩 및 토익 850점 조기 달성'] },
@@ -541,25 +517,6 @@ const CURRICULUM_DB = {
   ]
 };
 
-// 💡 [핵심 기능] 주요 어학/자격증의 실제 유효기간(개월 수) 데이터베이스
-const SPEC_DB = [
-  { id: 'toeic', name: 'TOEIC', type: 'lang', validity: 24, placeholder: '점수 (예: 850)' },
-  { id: 'opic', name: 'OPIc', type: 'lang', validity: 24, placeholder: '등급 (예: IM2)' },
-  { id: 'tos', name: 'TOEIC Speaking', type: 'lang', validity: 24, placeholder: '등급 (예: IH)' },
-  { id: 'teps', name: 'TEPS', type: 'lang', validity: 24, placeholder: '점수' },
-  { id: 'toefl', name: 'TOEFL', type: 'lang', validity: 24, placeholder: '점수' },
-  { id: 'kbs', name: 'KBS한국어능력시험', type: 'lang', validity: 24, placeholder: '등급 (예: 2+)' },
-  { id: 'history', name: '한국사능력검정시험', type: 'cert', validity: 'permanent', placeholder: '급수 (예: 1급)' },
-  { id: 'com', name: '컴퓨터활용능력 1급', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'com2', name: '컴퓨터활용능력 2급', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'qnet_it', name: '정보처리기사', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'sqld', name: 'SQLD', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'adsp', name: 'ADsP', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'credit', name: '신용분석사', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'afpk', name: 'AFPK', type: 'cert', validity: 36, placeholder: '합격' },
-  { id: 'cpa', name: 'CPA (공인회계사)', type: 'cert', validity: 'permanent', placeholder: '합격' },
-  { id: 'custom', name: '직접 입력', type: 'custom', validity: 'custom', placeholder: '점수/등급/합격여부' }
-];
 // 💡 [에리카 데이터 파싱기] 
 const ERICA_COMPRESSED_DATA = {
   '영상디자인학과': "Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|무빙타이포그라피1,전공핵심,3,2학년 1학기|베이직비주얼미디어,전공핵심,3,2학년 1학기|애니메이션워크샵1,전공핵심,3,2학년 1학기|영상디자인스튜디오1,전공핵심,3,2학년 1학기|영상미디어세미나,전공핵심,3,2학년 1학기|크리에이티브코딩1,전공핵심,3,2학년 1학기|게임스튜디오,전공핵심,3,2학년 2학기|멀티미디어워크샵,전공핵심,3,2학년 2학기|무빙타이포그라피2,전공핵심,3,2학년 2학기|애니메이션워크샵2,전공핵심,3,2학년 2학기|영상디자인스튜디오2,전공핵심,3,2학년 2학기|크리에이티브코딩2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|3d디자인스튜디오1,전공핵심,3,3학년 1학기|Ai디자인,전공핵심,3,3학년 1학기|스테이지미디어프로덕션,전공핵심,3,3학년 1학기|영상미디어스타트업,전공핵심,3,3학년 1학기|캡스톤디자인1,전공핵심,2,3학년 1학기|프로토타이핑워크룸,전공핵심,3,3학년 1학기|3d디자인스튜디오2,전공심화,3,3학년 2학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|디자인과창업,전공심화,2,3학년 2학기|미디어사운드디자인,전공핵심,3,3학년 2학기|미디어스토리텔링,전공심화,3,3학년 2학기|이머시브미디어스튜디오,전공핵심,3,3학년 2학기|캡스톤디자인2,전공핵심,2,3학년 2학기|디지털미디어퍼스펙티브,전공심화,3,4학년 1학기|영상프로젝트1,전공심화,3,4학년 1학기|인터랙티브&내러티브프로젝트1,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|디지털프로젝트디벨롭먼트,전공심화,3,4학년 2학기|영상프로젝트2,전공심화,3,4학년 2학기|인터랙티브&내러티브프로젝트2,전공심화,3,4학년 2학기",
@@ -621,6 +578,10 @@ Object.keys(DEPT_ALIASES).forEach(dept => {
    }
 });
 
+// ==========================================
+// 2. Helper Functions
+// ==========================================
+
 const getStatus = (earned, required, type = 'number') => {
   if (type === 'number') {
     const e = parseFloat(earned) || 0;
@@ -641,13 +602,11 @@ const calculateExpiryDate = (acqDate, validityMonths) => {
 
   const date = new Date(acqDate);
   date.setMonth(date.getMonth() + validityMonths);
-  
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
-
 
 // 💡 [실시간 D-Day 계산기]
 const getDDayFormatted = (dateStr, fallbackDesc) => {
@@ -683,29 +642,9 @@ const ScreenWrapper = ({ children, isActive }) => (
   </div>
 );
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
-  }
-  static getDerivedStateFromError(error) { return { hasError: true }; }
-  componentDidCatch(error, errorInfo) { this.setState({ error, errorInfo }); }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ padding: '20px', background: '#ffebee', color: '#cc0000', height: '100vh', overflow: 'auto' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>🚨 시스템 에러 방패 가동!</h2>
-          <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>이 화면을 캡처해서 AI(제미나이)에게 보여주세요. 1분 안에 고쳐드립니다!</p>
-          <pre style={{ fontSize: '11px', whiteSpace: 'pre-wrap', background: '#fff', padding: '10px', borderRadius: '5px' }}>
-            {this.state.error && this.state.error.toString()}<br/>
-            {this.state.errorInfo && this.state.errorInfo.componentStack}
-          </pre>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
+// ==========================================
+// 3. Main Application
+// ==========================================
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('splash');
@@ -726,7 +665,6 @@ export default function App() {
   const [achievedSpecs, setAchievedSpecs] = useState([]);
   const [customMilestones, setCustomMilestones] = useState([]); 
   
-
   // 나의 대외활동 일지 관리용 State
   const [journals, setJournals] = useState([]);
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
@@ -752,42 +690,6 @@ export default function App() {
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
 
-  // 💡 [수정됨] 가짜 데이터 및 크롤링 삭제. 각 주요 플랫폼으로 직행하는 기본 카드만 제공합니다.
-  useEffect(() => {
-    if (!userProfile.careerSub) return;
-    
-    setIsLoadingLive(true);
-    
-    setTimeout(() => {
-      const fallbackData = [
-        {
-           title: `[${userProfile.careerSub}] 링커리어 최신 공고 보러가기`,
-           dDay: "바로가기", views: "-", url: "https://linkareer.com/", dynamicReason: "인기 대외활동"
-        },
-        {
-           title: `[${userProfile.careerSub}] 위비티 대외활동/공모전 확인하기`,
-           dDay: "바로가기", views: "-", url: "https://www.wevity.com/", dynamicReason: "공모전 1위"
-        },
-        {
-           title: `[${userProfile.careerSub}] 캠퍼스픽 맞춤 동아리/스터디 찾기`,
-           dDay: "바로가기", views: "-", url: "https://www.campuspick.com/", dynamicReason: "대학생 필수"
-        }
-      ];
-      setLiveActivities(fallbackData);
-      setIsLoadingLive(false);
-    }, 300); // 0.3초의 짧은 전환 효과만 적용
-
-  }, [userProfile.careerSub]);
-
-  // 스펙 등록 버튼 클릭 핸들러
-  const handleAddSpec = () => {
-    if (!selectedSpec) return;
-    
-    const finalName = selectedSpec === '직접 입력' ? customSpecName : selectedSpec;
-    if (!finalName || !specScore || !specAcqDate) {
-      // 폼이 다 안 채워져 있으면 무시 (Alert창 대신 부드럽게 방어)
-      return;
-    }
   useEffect(() => {
     setIsAcquired(null);
     setIsVerifying(false);
@@ -837,18 +739,6 @@ export default function App() {
     const validity = specInfo ? specInfo.validity : 'custom';
     const expiry = calculateExpiryDate(specAcqDate, validity);
 
-    setAchievedSpecs(prev => [...prev, {
-      name: finalName,
-      score: specScore,
-      acqDate: specAcqDate,
-      expiryDate: expiry
-    }]);
-
-    // 입력폼 초기화
-    setSelectedSpec('');
-    setCustomSpecName('');
-    setSpecScore('');
-    setSpecAcqDate('');
     setAchievedSpecs(prev => [...prev, { name: finalName, score: specScore, acqDate: specAcqDate, expiryDate: expiry }]);
     setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
   };
@@ -875,17 +765,6 @@ export default function App() {
           const parsedTarget = parseInt(spec.targetScore);
           
           let isGoalMet = false;
-          if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) {
-            isGoalMet = parsedUserScore >= parsedTarget; 
-          } else {
-            isGoalMet = (scoreRank[achieved.score.toUpperCase()] || 0) >= (scoreRank[spec.targetScore.toUpperCase()] || 0); 
-          }
-
-          if (!isGoalMet) {
-            acc.milestones.push({ ...spec, currentStatus: `현재 ${achieved.score} (목표 ${spec.targetScore})` });
-          } else {
-            acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
-          }
           if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) isGoalMet = parsedUserScore >= parsedTarget; 
           else isGoalMet = (scoreRank[achieved.score.toUpperCase()] || 0) >= (scoreRank[spec.targetScore.toUpperCase()] || 0); 
 
@@ -922,13 +801,6 @@ export default function App() {
     const commonCourses = CURRICULUM_DB['공통/교양'] || [];
 
     let recommendedCourses = [];
-    
-    missingReqs.forEach(missing => {
-      let matches = [];
-      if (missing.type === '제2전공') {
-          matches = secondDeptCourses;
-      } else if (missing.type.includes('전공')) {
-          matches = userDeptCourses.filter(c => c.type === missing.type);
     missingReqs.forEach(missing => {
       let matches = [];
       if (missing.type === '제2전공') matches = secondDeptCourses;
@@ -958,7 +830,10 @@ export default function App() {
     };
   }, [userProfile, achievedSpecs, customMilestones]);
 
- 
+  // ==========================================
+  // Renderers 
+  // ==========================================
+
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
@@ -1059,12 +934,6 @@ export default function App() {
                   <tr><td className="py-2.5 px-3">사회봉사</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).volunteer}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.volunteer} onChange={e => handleCreditChange('volunteer', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr><td className="py-2.5 px-3">인턴십이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.internship} onChange={e => handleCreditChange('internship', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 font-bold text-[#00307B]">핵심교양</td><td className="text-center font-bold text-[#00307B]">{getGradReqs(userProfile.department, userProfile.majorType).coreElective}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.coreElective} onChange={e => handleCreditChange('coreElective', e.target.value)} className="w-full p-2 border border-[#00307B] rounded-lg text-center bg-white font-bold text-[#00307B] focus:outline-none" /></td></tr>
-                  <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 고전읽기</td><td className="text-center">{userProfile.credits.classicReading}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).classicReading}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.classicReading} onChange={e => handleCreditChange('classicReading', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-                  <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 글로벌언어</td><td className="text-center">{userProfile.credits.globalLang}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).globalLang}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.globalLang} onChange={e => handleCreditChange('globalLang', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-                  <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 소프트웨어</td><td className="text-center">{userProfile.credits.sw}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).sw}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.sw} onChange={e => handleCreditChange('sw', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-                  <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 미래산업</td><td className="text-center">{userProfile.credits.futureStartup}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).futureStartup}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.futureStartup} onChange={e => handleCreditChange('futureStartup', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-                  <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 과학기술</td><td className="text-center">{userProfile.credits.scienceTech}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).scienceTech}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.scienceTech} onChange={e => handleCreditChange('scienceTech', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-
                   <tr><td className="py-2.5 px-3 font-bold text-orange-600">IC-PBL강좌수</td><td className="text-center font-bold text-orange-400">{getGradReqs(userProfile.department, userProfile.majorType).icpbl}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.icpbl} onChange={e => handleCreditChange('icpbl', e.target.value)} className="w-full p-2 border border-orange-300 rounded-lg text-center bg-orange-50 font-bold focus:border-orange-500 focus:outline-none" /></td></tr>
                 </tbody>
               </table>
@@ -1093,13 +962,9 @@ export default function App() {
           </div>
         )}
 
-        {/* 💡 [완벽 교체] 드롭다운 및 유효기간 자동 계산이 적용된 스펙 등록 화면 */}
         {onboardingStep === 5 && (
           <div className="animate-fade-in-up pb-10">
             <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
-            <p className="text-gray-500 text-sm mb-6">등록하신 취득일을 기준으로 유효기간(만료일)을 자동 계산합니다.</p>
-            
-            {/* 등록된 스펙 리스트 */}
             <p className="text-gray-500 text-sm mb-6">등록된 항목은 로드맵의 '성취 리스트'로 이동합니다.</p>
             
             <div className="space-y-3 mb-8">
@@ -1122,19 +987,6 @@ export default function App() {
               <div>
                 <label className="block text-[11px] font-bold text-gray-500 mb-1 ml-1">어학 / 자격증 종류</label>
                 <select 
-                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:border-[#00307B] focus:ring-1 focus:ring-[#00307B]"
-                  value={selectedSpec}
-                  onChange={(e) => { setSelectedSpec(e.target.value); setSpecScore(''); }}
-                >
-                  <option value="">보유하신 스펙을 선택하세요</option>
-                  <optgroup label="어학">
-                    {SPEC_DB.filter(s => s.type === 'lang').map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
-                  </optgroup>
-                  <optgroup label="자격증">
-                    {SPEC_DB.filter(s => s.type === 'cert').map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
-                  </optgroup>
-                  <optgroup label="기타">
-                    <option value="직접 입력">직접 입력 (기타 대외활동 등)</option>
                   className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:border-[#00307B]"
                   value={selectedSpec}
                   onChange={(e) => { setSelectedSpec(e.target.value); }}
@@ -1152,30 +1004,6 @@ export default function App() {
                 </select>
               </div>
 
-              {selectedSpec === '직접 입력' && (
-                <input type="text" placeholder="자격증/활동 명을 직접 입력하세요" className="w-full p-3.5 bg-white border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" value={customSpecName} onChange={e => setCustomSpecName(e.target.value)} />
-              )}
-
-              {selectedSpec && (
-                <div className="flex gap-3">
-                  <div className="flex-1">
-                    <label className="block text-[11px] font-bold text-gray-500 mb-1 ml-1">점수 / 합격여부</label>
-                    <input type="text" placeholder={SPEC_DB.find(s => s.name === selectedSpec)?.placeholder || '입력'} className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" value={specScore} onChange={e => setSpecScore(e.target.value)} />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-[11px] font-bold text-gray-500 mb-1 ml-1">취득일자</label>
-                    <input type="date" className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-600 focus:outline-none focus:border-[#00307B]" value={specAcqDate} onChange={e => setSpecAcqDate(e.target.value)} />
-                  </div>
-                </div>
-              )}
-
-              <button 
-                onClick={handleAddSpec} 
-                disabled={!selectedSpec}
-                className={`w-full py-4 text-white font-black text-sm rounded-xl flex items-center justify-center gap-2 transition-all ${selectedSpec ? 'bg-[#00307B] hover:bg-blue-900 shadow-md' : 'bg-gray-300 cursor-not-allowed'}`}
-              >
-                <Plus size={18}/> 등록하기
-              </button>
               {selectedSpec && (
                 <div className="mt-2 animate-fade-in-up">
                   {selectedSpec === '직접 입력' && (
@@ -1284,13 +1112,11 @@ export default function App() {
         {/* 대외활동 아웃링크 */}
         <div className="mb-10">
           <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
-            <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LINK</span>
             <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
           </h3>
           {isLoadingLive ? (
             <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
               <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
-              <p className="text-xs text-gray-500 font-bold">링크를 불러오는 중...</p>
               <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
             </div>
           ) : (
@@ -1307,6 +1133,8 @@ export default function App() {
             </div>
           )}
         </div>
+
+        {/* 성취 리스트 */}
         {data.achieved.length > 0 && (
           <div className="mb-10">
             <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
@@ -1321,8 +1149,6 @@ export default function App() {
                   </div>
                   {spec.expiryDate && spec.expiryDate !== '-' && (
                     <div className="text-right">
-                      <p className="text-[9px] text-orange-400 font-bold uppercase mb-0.5">만료일</p>
-                      <p className="text-[11px] font-black text-orange-600 bg-orange-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
                       <p className="text-[9px] text-gray-400 font-bold uppercase mb-0.5">만료일</p>
                       <p className="text-[11px] font-black text-gray-600 bg-gray-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
                     </div>
