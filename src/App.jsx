@@ -5,14 +5,6 @@ import {
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
 
-// ==========================================
-<<<<<<< HEAD
-// 1. 전역 데이터베이스 (식품/패션 직무 대폭 확장 유지)
-=======
-// 1. 전역 데이터베이스 (서울 + ERICA 완벽 통합)
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
-// ==========================================
-
 const CAMPUS_DATA = {
   SEOUL: {
     name: '서울캠퍼스',
@@ -549,7 +541,6 @@ const CURRICULUM_DB = {
   ]
 };
 
-<<<<<<< HEAD
 // 💡 [핵심 기능] 주요 어학/자격증의 실제 유효기간(개월 수) 데이터베이스
 const SPEC_DB = [
   { id: 'toeic', name: 'TOEIC', type: 'lang', validity: 24, placeholder: '점수 (예: 850)' },
@@ -569,7 +560,6 @@ const SPEC_DB = [
   { id: 'cpa', name: 'CPA (공인회계사)', type: 'cert', validity: 'permanent', placeholder: '합격' },
   { id: 'custom', name: '직접 입력', type: 'custom', validity: 'custom', placeholder: '점수/등급/합격여부' }
 ];
-=======
 // 💡 [에리카 데이터 파싱기] 
 const ERICA_COMPRESSED_DATA = {
   '영상디자인학과': "Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|무빙타이포그라피1,전공핵심,3,2학년 1학기|베이직비주얼미디어,전공핵심,3,2학년 1학기|애니메이션워크샵1,전공핵심,3,2학년 1학기|영상디자인스튜디오1,전공핵심,3,2학년 1학기|영상미디어세미나,전공핵심,3,2학년 1학기|크리에이티브코딩1,전공핵심,3,2학년 1학기|게임스튜디오,전공핵심,3,2학년 2학기|멀티미디어워크샵,전공핵심,3,2학년 2학기|무빙타이포그라피2,전공핵심,3,2학년 2학기|애니메이션워크샵2,전공핵심,3,2학년 2학기|영상디자인스튜디오2,전공핵심,3,2학년 2학기|크리에이티브코딩2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|3d디자인스튜디오1,전공핵심,3,3학년 1학기|Ai디자인,전공핵심,3,3학년 1학기|스테이지미디어프로덕션,전공핵심,3,3학년 1학기|영상미디어스타트업,전공핵심,3,3학년 1학기|캡스톤디자인1,전공핵심,2,3학년 1학기|프로토타이핑워크룸,전공핵심,3,3학년 1학기|3d디자인스튜디오2,전공심화,3,3학년 2학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|디자인과창업,전공심화,2,3학년 2학기|미디어사운드디자인,전공핵심,3,3학년 2학기|미디어스토리텔링,전공심화,3,3학년 2학기|이머시브미디어스튜디오,전공핵심,3,3학년 2학기|캡스톤디자인2,전공핵심,2,3학년 2학기|디지털미디어퍼스펙티브,전공심화,3,4학년 1학기|영상프로젝트1,전공심화,3,4학년 1학기|인터랙티브&내러티브프로젝트1,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|디지털프로젝트디벨롭먼트,전공심화,3,4학년 2학기|영상프로젝트2,전공심화,3,4학년 2학기|인터랙티브&내러티브프로젝트2,전공심화,3,4학년 2학기",
@@ -630,11 +620,6 @@ Object.keys(DEPT_ALIASES).forEach(dept => {
        CURRICULUM_DB[dept] = CURRICULUM_DB[DEPT_ALIASES[dept]];
    }
 });
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
-
-// ==========================================
-// 2. Helper Functions
-// ==========================================
 
 const getStatus = (earned, required, type = 'number') => {
   if (type === 'number') {
@@ -649,10 +634,6 @@ const getStatus = (earned, required, type = 'number') => {
   }
 };
 
-<<<<<<< HEAD
-// 💡 [핵심 로직] 취득일을 기준으로 유효기간(만료일) 자동 계산기
-=======
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
 const calculateExpiryDate = (acqDate, validityMonths) => {
   if (validityMonths === 'permanent') return '영구 (만료없음)';
   if (validityMonths === 'custom') return '직접 확인 필요';
@@ -660,18 +641,14 @@ const calculateExpiryDate = (acqDate, validityMonths) => {
 
   const date = new Date(acqDate);
   date.setMonth(date.getMonth() + validityMonths);
-<<<<<<< HEAD
   
-=======
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
 
-<<<<<<< HEAD
-=======
+
 // 💡 [실시간 D-Day 계산기]
 const getDDayFormatted = (dateStr, fallbackDesc) => {
   if (!dateStr || dateStr.includes('상시')) return fallbackDesc;
@@ -700,14 +677,12 @@ const generatePlatformSearchLink = (careerSub, platformStr) => {
   return '#';
 };
 
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
 const ScreenWrapper = ({ children, isActive }) => (
   <div className={`absolute inset-0 h-full w-full bg-gray-50 transition-all duration-300 transform ${isActive ? 'opacity-100 translate-x-0 z-10 pointer-events-auto' : 'opacity-0 translate-x-10 z-0 pointer-events-none'} overflow-y-auto pb-24`}>
     {children}
   </div>
 );
 
-<<<<<<< HEAD
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -732,12 +707,6 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-=======
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
-// ==========================================
-// 3. Main Application
-// ==========================================
-
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('splash');
   const [isLoaded, setIsLoaded] = useState(false);
@@ -757,26 +726,20 @@ export default function App() {
   const [achievedSpecs, setAchievedSpecs] = useState([]);
   const [customMilestones, setCustomMilestones] = useState([]); 
   
-<<<<<<< HEAD
-  // 💡 [핵심] 스펙 입력용 State 추가
-=======
+
   // 나의 대외활동 일지 관리용 State
   const [journals, setJournals] = useState([]);
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
   
   // 스펙 사진 인증(OCR)용 State
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
   const [selectedSpec, setSelectedSpec] = useState('');
   const [customSpecName, setCustomSpecName] = useState('');
   const [specScore, setSpecScore] = useState('');
   const [specAcqDate, setSpecAcqDate] = useState('');
-<<<<<<< HEAD
-=======
   
   const [isAcquired, setIsAcquired] = useState(null); 
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationSuccess, setVerificationSuccess] = useState(false);
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
 
   const [liveActivities, setLiveActivities] = useState([]);
   const [isLoadingLive, setIsLoadingLive] = useState(false);
@@ -789,7 +752,6 @@ export default function App() {
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
 
-<<<<<<< HEAD
   // 💡 [수정됨] 가짜 데이터 및 크롤링 삭제. 각 주요 플랫폼으로 직행하는 기본 카드만 제공합니다.
   useEffect(() => {
     if (!userProfile.careerSub) return;
@@ -826,7 +788,6 @@ export default function App() {
       // 폼이 다 안 채워져 있으면 무시 (Alert창 대신 부드럽게 방어)
       return;
     }
-=======
   useEffect(() => {
     setIsAcquired(null);
     setIsVerifying(false);
@@ -871,13 +832,11 @@ export default function App() {
   const handleAddSpec = () => {
     const finalName = selectedSpec === '직접 입력' ? customSpecName : selectedSpec;
     if (!finalName || !specScore || !specAcqDate) return;
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
 
     const specInfo = SPEC_DB.find(s => s.name === selectedSpec);
     const validity = specInfo ? specInfo.validity : 'custom';
     const expiry = calculateExpiryDate(specAcqDate, validity);
 
-<<<<<<< HEAD
     setAchievedSpecs(prev => [...prev, {
       name: finalName,
       score: specScore,
@@ -890,7 +849,6 @@ export default function App() {
     setCustomSpecName('');
     setSpecScore('');
     setSpecAcqDate('');
-=======
     setAchievedSpecs(prev => [...prev, { name: finalName, score: specScore, acqDate: specAcqDate, expiryDate: expiry }]);
     setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
   };
@@ -902,7 +860,6 @@ export default function App() {
       cat: 'cert', title: finalName, dDay: '예정', duration: '-', desc: '내가 설정한 커스텀 목표', url: '#'
     }]);
     setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
   };
 
   const userRoadmapData = useMemo(() => {
@@ -918,7 +875,6 @@ export default function App() {
           const parsedTarget = parseInt(spec.targetScore);
           
           let isGoalMet = false;
-<<<<<<< HEAD
           if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) {
             isGoalMet = parsedUserScore >= parsedTarget; 
           } else {
@@ -930,13 +886,11 @@ export default function App() {
           } else {
             acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
           }
-=======
           if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) isGoalMet = parsedUserScore >= parsedTarget; 
           else isGoalMet = (scoreRank[achieved.score.toUpperCase()] || 0) >= (scoreRank[spec.targetScore.toUpperCase()] || 0); 
 
           if (!isGoalMet) acc.milestones.push({ ...spec, currentStatus: `현재 ${achieved.score} (목표 ${spec.targetScore})` });
           else acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
         } else {
           acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
         }
@@ -968,7 +922,6 @@ export default function App() {
     const commonCourses = CURRICULUM_DB['공통/교양'] || [];
 
     let recommendedCourses = [];
-<<<<<<< HEAD
     
     missingReqs.forEach(missing => {
       let matches = [];
@@ -976,7 +929,6 @@ export default function App() {
           matches = secondDeptCourses;
       } else if (missing.type.includes('전공')) {
           matches = userDeptCourses.filter(c => c.type === missing.type);
-=======
     missingReqs.forEach(missing => {
       let matches = [];
       if (missing.type === '제2전공') matches = secondDeptCourses;
@@ -984,7 +936,6 @@ export default function App() {
           if (missing.type === '전공 100~300단위') matches = userDeptCourses.filter(c => c.type === '전공 100~300단위' || c.type.includes('핵심') || c.type.includes('기초'));
           else if (missing.type === '전공 400단위') matches = userDeptCourses.filter(c => c.type === '전공 400단위' || c.type.includes('심화'));
           else matches = userDeptCourses.filter(c => c.type === missing.type);
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
           if(matches.length === 0) matches = allCourses.filter(c => c.type === missing.type && c.ownerDept === userProfile.department);
       } else {
           matches = commonCourses.filter(c => c.type === missing.type);
@@ -1007,10 +958,7 @@ export default function App() {
     };
   }, [userProfile, achievedSpecs, customMilestones]);
 
-  // ==========================================
-  // Renderers 
-  // ==========================================
-
+ 
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
@@ -1111,14 +1059,12 @@ export default function App() {
                   <tr><td className="py-2.5 px-3">사회봉사</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).volunteer}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.volunteer} onChange={e => handleCreditChange('volunteer', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr><td className="py-2.5 px-3">인턴십이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.internship} onChange={e => handleCreditChange('internship', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 font-bold text-[#00307B]">핵심교양</td><td className="text-center font-bold text-[#00307B]">{getGradReqs(userProfile.department, userProfile.majorType).coreElective}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.coreElective} onChange={e => handleCreditChange('coreElective', e.target.value)} className="w-full p-2 border border-[#00307B] rounded-lg text-center bg-white font-bold text-[#00307B] focus:outline-none" /></td></tr>
-<<<<<<< HEAD
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 고전읽기</td><td className="text-center">{userProfile.credits.classicReading}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).classicReading}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.classicReading} onChange={e => handleCreditChange('classicReading', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 글로벌언어</td><td className="text-center">{userProfile.credits.globalLang}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).globalLang}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.globalLang} onChange={e => handleCreditChange('globalLang', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 소프트웨어</td><td className="text-center">{userProfile.credits.sw}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).sw}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.sw} onChange={e => handleCreditChange('sw', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 미래산업</td><td className="text-center">{userProfile.credits.futureStartup}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).futureStartup}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.futureStartup} onChange={e => handleCreditChange('futureStartup', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
                   <tr className="bg-gray-50"><td className="py-2.5 px-3 pl-6 text-gray-500">↳ 과학기술</td><td className="text-center">{userProfile.credits.scienceTech}</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).scienceTech}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.scienceTech} onChange={e => handleCreditChange('scienceTech', e.target.value)} className="w-full p-2 border border-gray-200 rounded-lg text-center bg-white focus:border-[#00307B] focus:outline-none" /></td></tr>
-=======
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
+
                   <tr><td className="py-2.5 px-3 font-bold text-orange-600">IC-PBL강좌수</td><td className="text-center font-bold text-orange-400">{getGradReqs(userProfile.department, userProfile.majorType).icpbl}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.icpbl} onChange={e => handleCreditChange('icpbl', e.target.value)} className="w-full p-2 border border-orange-300 rounded-lg text-center bg-orange-50 font-bold focus:border-orange-500 focus:outline-none" /></td></tr>
                 </tbody>
               </table>
@@ -1151,14 +1097,11 @@ export default function App() {
         {onboardingStep === 5 && (
           <div className="animate-fade-in-up pb-10">
             <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
-<<<<<<< HEAD
             <p className="text-gray-500 text-sm mb-6">등록하신 취득일을 기준으로 유효기간(만료일)을 자동 계산합니다.</p>
             
             {/* 등록된 스펙 리스트 */}
-=======
             <p className="text-gray-500 text-sm mb-6">등록된 항목은 로드맵의 '성취 리스트'로 이동합니다.</p>
             
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
             <div className="space-y-3 mb-8">
               {achievedSpecs.map((spec, i) => (
                 <div key={i} className="bg-gray-50 p-4 rounded-2xl flex items-center justify-between border border-gray-200">
@@ -1175,15 +1118,10 @@ export default function App() {
               ))}
             </div>
             
-<<<<<<< HEAD
-            {/* 스펙 입력 폼 */}
-=======
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
             <div className="p-6 border-2 border-gray-100 bg-white rounded-3xl shadow-sm space-y-4">
               <div>
                 <label className="block text-[11px] font-bold text-gray-500 mb-1 ml-1">어학 / 자격증 종류</label>
                 <select 
-<<<<<<< HEAD
                   className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:border-[#00307B] focus:ring-1 focus:ring-[#00307B]"
                   value={selectedSpec}
                   onChange={(e) => { setSelectedSpec(e.target.value); setSpecScore(''); }}
@@ -1197,7 +1135,6 @@ export default function App() {
                   </optgroup>
                   <optgroup label="기타">
                     <option value="직접 입력">직접 입력 (기타 대외활동 등)</option>
-=======
                   className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:border-[#00307B]"
                   value={selectedSpec}
                   onChange={(e) => { setSelectedSpec(e.target.value); }}
@@ -1211,12 +1148,10 @@ export default function App() {
                   </optgroup>
                   <optgroup label="기타">
                     <option value="직접 입력">직접 입력 (기타 활동 등)</option>
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
                   </optgroup>
                 </select>
               </div>
 
-<<<<<<< HEAD
               {selectedSpec === '직접 입력' && (
                 <input type="text" placeholder="자격증/활동 명을 직접 입력하세요" className="w-full p-3.5 bg-white border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" value={customSpecName} onChange={e => setCustomSpecName(e.target.value)} />
               )}
@@ -1241,7 +1176,6 @@ export default function App() {
               >
                 <Plus size={18}/> 등록하기
               </button>
-=======
               {selectedSpec && (
                 <div className="mt-2 animate-fade-in-up">
                   {selectedSpec === '직접 입력' && (
@@ -1313,7 +1247,6 @@ export default function App() {
                   )}
                 </div>
               )}
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
             </div>
           </div>
         )}
@@ -1351,20 +1284,14 @@ export default function App() {
         {/* 대외활동 아웃링크 */}
         <div className="mb-10">
           <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
-<<<<<<< HEAD
             <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LINK</span>
-=======
             <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
           </h3>
           {isLoadingLive ? (
             <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
               <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
-<<<<<<< HEAD
               <p className="text-xs text-gray-500 font-bold">링크를 불러오는 중...</p>
-=======
               <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
             </div>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
@@ -1380,12 +1307,6 @@ export default function App() {
             </div>
           )}
         </div>
-
-<<<<<<< HEAD
-        {/* 1. 성취 리스트 (이미 달성한 목표) - 만료일 표시 업데이트 */}
-=======
-        {/* 성취 리스트 */}
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
         {data.achieved.length > 0 && (
           <div className="mb-10">
             <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
@@ -1400,13 +1321,10 @@ export default function App() {
                   </div>
                   {spec.expiryDate && spec.expiryDate !== '-' && (
                     <div className="text-right">
-<<<<<<< HEAD
                       <p className="text-[9px] text-orange-400 font-bold uppercase mb-0.5">만료일</p>
                       <p className="text-[11px] font-black text-orange-600 bg-orange-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
-=======
                       <p className="text-[9px] text-gray-400 font-bold uppercase mb-0.5">만료일</p>
                       <p className="text-[11px] font-black text-gray-600 bg-gray-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
->>>>>>> a154600110f4b6f344e06e9c33183f35f885fb4d
                     </div>
                   )}
                 </div>
